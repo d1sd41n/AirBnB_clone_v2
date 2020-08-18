@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+""" generates a tar file"""
 from fabric.api import local
 import datetime
 from os.path import getsize
 
 
 def do_pack():
+    """ generates a tar file"""
     try:
         local("mkdir -p versions")
         fecha = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
