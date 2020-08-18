@@ -60,9 +60,8 @@ def do_clean(number=0):
 
     if n <= 1:
         n = 1
-    else:
-        n += 1
-        with lcd("versions"):
-            local("ls -1t | tail -n +{:d} | xargs rm -rf".format(n))
-        with cd("/data/web_static/releases/"):
-            sudo("ls -1t -I test | tail -n +{:d} | xargs rm -rf".format(n))
+    n += 1
+    with lcd("versions"):
+        local("ls -1t | tail -n +{:d} | xargs rm -rf".format(n))
+    with cd("/data/web_static/releases/"):
+        sudo("ls -1t -I test | tail -n +{:d} | xargs rm -rf".format(n))
