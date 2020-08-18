@@ -5,11 +5,12 @@ import os
 import datetime
 from os.path import isfile
 
+env.hosts = ['35.237.173.35', '34.75.253.25']
+
 
 def do_pack():
-    """do_pack"""
+    """do_pack   """
     try:
-
         local("mkdir -p versions")
         fecha = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         nombre = "versions/web_static_" + fecha + ".tgz"
@@ -19,8 +20,6 @@ def do_pack():
         return nombre
     except:
         return None
-
-env.hosts = ['35.237.173.35', '34.75.253.25']
 
 
 def do_deploy(archive_path):
@@ -47,9 +46,8 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """deploy"""
+    """do_packdo_pack"""
     d = do_pack()
     if d is None:
         return False
-
     return do_deploy(d)
