@@ -1,24 +1,26 @@
 #!/usr/bin/python3
-""" hola essdsasfdsfdsd"""
+"""do_pack do_deploy """
 from fabric.api import *
-from datetime import datetime
-from os.path import isfile, getsize
-
-env.hosts = ['35.237.173.35', '34.75.253.25']
+import os
+import datetime
+from os.path import isfile
 
 
 def do_pack():
-    """ generates a tar file"""
+    """do_pack"""
     try:
+
         local("mkdir -p versions")
         fecha = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         nombre = "versions/web_static_" + fecha + ".tgz"
         local("tar -cvzf " + nombre + " web_static")
-        print("web_static packed: {} -> {}Bytes".format(nombre,
-              getsize(nombre)))
+        print("web_static packed: {} -> {}Bytes".format(
+            nombre, os.path.getsize(nombre)))
         return nombre
     except:
         return None
+
+env.hosts = ['35.237.173.35', '34.75.253.25']
 
 
 def do_deploy(archive_path):
@@ -45,8 +47,9 @@ def do_deploy(archive_path):
 
 
 def deploy():
-	""" un comentario"""
-	d_pack = do_pack()
-	if d_pack is None:
-		return False
-	return do_deploy(d_pack)
+    """deploy"""
+    d = do_pack()
+    if d is None:
+        return False
+
+    return do_deploy(d)
