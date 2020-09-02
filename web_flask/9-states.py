@@ -19,6 +19,7 @@ def states_list():
     render = render_template('9-states.html', states=states)
     return render
 
+
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
     """search one state by id and display it
@@ -33,6 +34,7 @@ def state_id(id):
         return render_template("9-states.html", state=i)
     else:
         return render_template("9-states.html")
+
 
 @app.teardown_appcontext
 def teardown(exc):
