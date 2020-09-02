@@ -12,7 +12,7 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/states_list/', strict_slashes=False)
+@app.route('/cities_by_states/', strict_slashes=False)
 def cities_by_states():
     """list states"""
     states = storage.all(State)
