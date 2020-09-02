@@ -17,28 +17,33 @@
 				<button>Search</button>
 				<div class="locations">
 					<h3>States</h3>
-					<h4>California, Arizona...</h4>
-					<ul class="popover">
+					<h4>&nbsp</h4>
+					<div class="popover">
+					  <ul>
 						{% for state in states.values()|sort(attribute="name") %}
-						<li><h2>{{ state.name }}</h2>
-							<ul>
-								{% for city in states.values()|sort(attribute="name") %}
-								<li><h4>{{ city.name }}</h4></li>
+					  <li>
+						  <h2>{{ state.name }}</h2>
+						  <ul>
+							  {% for city in state.cities|sort(attribute="name") %}
+									 <li>{{ city.name }}</li>
 								{% endfor %}
-							</ul>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<div class="amenities">
+						  </ul>
+					  </li>
+					  {% endfor %}
+					  </ul>
+					</div>
+				  </div>
+				  <div class="amenities">
 					<h3>Amenities</h3>
-					<h4>Internet, Kitchen...</h4>
-					<ul class="popover">
-						{% for amenity in amenities.values()|sort(attribute="name") %}
-						<li><h4>{{ amenity.name }}</h4></li>
+					<h4>&nbsp</h4>
+					<div class="popover">
+					  <ul>
+						  {% for amenity in amenities.values()|sort(attribute="name") %}
+						<li>{{ amenity.name }}</li>
 						{% endfor %}
-					</ul>
-				</div>
+					  </ul>
+					</div>
+				  </div>
 
 			</section>
 		</div>
